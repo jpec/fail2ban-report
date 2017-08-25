@@ -1,14 +1,19 @@
 # fail2ban-report
-Fail2ban report
+This tool generate a simple report of fail2ban activity.
 
-Example :
+[Example PDF report](report.pdf)
 
-Extract fail2ban logs in log.csv :
+## Extract fail2ban logs in a CSV file
 
-./fail2ban-getlog log.csv
+```bash
+$ ./fail2ban-getlog log.csv
+```
+You should create a cron task to regulary run `fail2ban-getlog log.csv` and populate CSV file.
 
-Generate report.pdf from log.csv data using GeoLite2-Country.mmdb database :
+## Generate the PDF report using the CSV data and GeoLite2-Country database
 
+```bash
 ./fail2ban-report log.csv GeoLite2-Country.mmdb report.pdf
+```
 
-You can download GeoLite2-Country database here : 
+Link to GeoLite2-Country database [HERE](http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz).
