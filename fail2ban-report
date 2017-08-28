@@ -62,14 +62,14 @@ def generate_report(f_log, f_country, f_pdf):
     fig.savefig(pp, format='pdf')
     
     nb_ban_by_country = get_nb_ban_by_country(data, f_country)
-    df = pd.DataFrame.from_dict(nb_ban_by_country, orient='index').rename(columns={0:"Bans"}).sort_values(by='Bans', ascending=True) #.query('Bans > 1')
-    plot = df.plot(title="Bans by country", kind='pie', subplots=True, legend=False, figsize=(10.0,10.0))
+    df = pd.DataFrame.from_dict(nb_ban_by_country, orient='index').rename(columns={0:"Bans"}).sort_values(by='Bans', ascending=False).head(20)
+    plot = df.plot(title="Bans by country (top 20)", kind='pie', subplots=True, legend=False, figsize=(10.0,10.0))
     fig = plot[0].get_figure()
     fig.savefig(pp, format='pdf')
 
     nb_ban_by_ip = get_nb_ban_by_ip(data)
-    df = pd.DataFrame.from_dict(nb_ban_by_ip, orient='index').rename(columns={0:"Bans"}).sort_values(by='Bans', ascending=True) #.query('Bans > 1')
-    plot = df.plot(title="Bans by IP", kind='pie', legend=False, subplots=True, figsize=(10.0,10.0))
+    df = pd.DataFrame.from_dict(nb_ban_by_ip, orient='index').rename(columns={0:"Bans"}).sort_values(by='Bans', ascending=False).head(20)
+    plot = df.plot(title="Bans by IP (top 20)", kind='pie', legend=False, subplots=True, figsize=(10.0,10.0))
     fig = plot[0].get_figure()
     fig.savefig(pp, format='pdf')
     
