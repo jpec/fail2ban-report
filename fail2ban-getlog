@@ -13,8 +13,8 @@ else:
     old = []
     for l in f_old:
         old.append(l[0:-1])
-        f_old.close()
-        print(len(old), "existing line(s).")
+    f_old.close()
+    print(len(old), "existing line(s).")
     f_in = open(F_LOG, "r")
     f_out = open(argv[1], "a+")
     c = 0
