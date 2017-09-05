@@ -40,8 +40,11 @@ def get_nb_ban_by_country(data, f_country):
     reader = geoip2.database.Reader(f_country)
     d = {}
     for ip, date in data:
-        response = reader.country(ip)
-        country = response.country.name
+        try:
+            response = reader.country(ip)
+            country = response.country.name
+        except:
+            country = "n/c"
         if country in d.keys():
             d[country] += 1
         else:
